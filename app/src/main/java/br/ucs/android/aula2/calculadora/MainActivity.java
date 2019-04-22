@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         clear();
     }
 
-    public void selectPlayerTime(View view){
+    public void selectPlayer(View view){
         if(playerTime != 0) return;
 
         switch (view.getId()) {
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         if(gameOver) return;
 
         if(playerTime == 0){
-            alertMessage("Erro", "Você deve selecionar um jogador para começar", 0);
+            alertMessage("Erro", "Você deve selecionar um jogador para inicar jogando", 1);
             return;
         }
 
