@@ -1,6 +1,7 @@
 package br.ucs.android.aula2.calculadora;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import java.lang.reflect.Array;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private Boolean gameOver;
     private CharSequence winner;
     private AlertDialog alertModal;
+    private Boolean[] selectedImages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
         gameOver = false;
         winner = "";
         playerTime = 0;
+        selectedImages = new Boolean[2];
+        selectedImages[0] = selectedImages[1] = false;
     }
 
     public void compartilhar(View view) {
@@ -118,12 +123,26 @@ public class MainActivity extends AppCompatActivity {
 
         switch (view.getId()) {
             case (R.id.player1):
-                playerTime = 1;
+                if(!selectedImages[0]){
+                    view.setBackgroundResource(R.drawable.button1);
+                    Array.set(selectedImages, 0, true);
+                }
+                else if(selectedImages[1]){
+                    playerTime = 1;
+                }
                 break;
             case (R.id.player2):
-                playerTime = 2;
+                if(!selectedImages[1]){
+                    view.setBackgroundResource(R.drawable.button2);
+                    Array.set(selectedImages, 1, true);
+                }
+                else if(selectedImages[0]){
+                    playerTime = 2;
+                }
                 break;
         }
+
+        ((Button)view).setText("");
     }
 
     public void selectPosition(View view) {

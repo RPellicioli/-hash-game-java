@@ -18,7 +18,7 @@
         <Button
             android:id="@+id/pos1"
             android:layout_width="120dp"
-            android:layout_height="138dp"
+            android:layout_height="120dp"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:onClick="selectPosition"
@@ -28,7 +28,7 @@
         <Button
             android:id="@+id/pos2"
             android:layout_width="120dp"
-            android:layout_height="138dp"
+            android:layout_height="120dp"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:onClick="selectPosition"
@@ -38,7 +38,7 @@
         <Button
             android:id="@+id/pos3"
             android:layout_width="120dp"
-            android:layout_height="138dp"
+            android:layout_height="120dp"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:onClick="selectPosition"
@@ -48,7 +48,7 @@
         <Button
             android:id="@+id/pos4"
             android:layout_width="120dp"
-            android:layout_height="138dp"
+            android:layout_height="120dp"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:onClick="selectPosition"
@@ -58,7 +58,7 @@
         <Button
             android:id="@+id/pos5"
             android:layout_width="120dp"
-            android:layout_height="138dp"
+            android:layout_height="120dp"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:onClick="selectPosition"
@@ -68,7 +68,7 @@
         <Button
             android:id="@+id/pos6"
             android:layout_width="120dp"
-            android:layout_height="138dp"
+            android:layout_height="120dp"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:onClick="selectPosition"
@@ -78,7 +78,7 @@
         <Button
             android:id="@+id/pos7"
             android:layout_width="120dp"
-            android:layout_height="138dp"
+            android:layout_height="120dp"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:onClick="selectPosition"
@@ -88,7 +88,7 @@
         <Button
             android:id="@+id/pos8"
             android:layout_width="120dp"
-            android:layout_height="138dp"
+            android:layout_height="120dp"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:onClick="selectPosition"
@@ -98,7 +98,7 @@
         <Button
             android:id="@+id/pos9"
             android:layout_width="120dp"
-            android:layout_height="138dp"
+            android:layout_height="120dp"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:onClick="selectPosition"
@@ -108,7 +108,7 @@
         <Button
             android:id="@+id/player1"
             android:layout_width="120dp"
-            android:layout_height="138dp"
+            android:layout_height="120dp"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:onClick="selectPlayer"
@@ -118,7 +118,7 @@
         <Button
             android:id="@+id/player2"
             android:layout_width="120dp"
-            android:layout_height="138dp"
+            android:layout_height="120dp"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:onClick="selectPlayer"
@@ -128,7 +128,7 @@
         <Button
             android:id="@+id/clear"
             android:layout_width="120dp"
-            android:layout_height="138dp"
+            android:layout_height="120dp"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:onClick="buttonClear"
