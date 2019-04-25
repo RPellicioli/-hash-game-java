@@ -183,8 +183,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private File createFileImage() throws IOException {
-        String timeStamp = new
-                SimpleDateFormat("yyyyMMdd_Hhmmss").format(
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_Hhmmss").format(
                 new Date());
         File pasta = Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES);
@@ -229,11 +228,11 @@ public class MainActivity extends AppCompatActivity {
         CharSequence c3 = getPositionView(R.id.pos9).getText();
 
         if(((a1 == b1 && a1 == c1) || (a1 == a2 && a1 == a3) || (a1 == b2 && a1 == c3)) && a1 != ""){
-            if(a1 == b1){
+            if(a1 == b1 && a1 == c1){
                 getPositionView(R.id.pos4).setBackgroundColor(0xFF00FF00);
                 getPositionView(R.id.pos7).setBackgroundColor(0xFF00FF00);
             }
-            else if(a1 == a2){
+            else if(a1 == a2 && a1 == a3){
                 getPositionView(R.id.pos2).setBackgroundColor(0xFF00FF00);
                 getPositionView(R.id.pos3).setBackgroundColor(0xFF00FF00);
             }
@@ -246,11 +245,11 @@ public class MainActivity extends AppCompatActivity {
             winner = a1;
         }
         else if(((b2 == b1 && b2 == b3) || (b2 == a2 && b2 == c2) || (b2 == a3 && b2 == c1)) && b2 != ""){
-            if(b2 == b1){
+            if(b2 == b1 && b2 == b3){
                 getPositionView(R.id.pos4).setBackgroundColor(0xFF00FF00);
                 getPositionView(R.id.pos6).setBackgroundColor(0xFF00FF00);
             }
-            else if(b2 == a2){
+            else if(b2 == a2 && b2 == c2){
                 getPositionView(R.id.pos2).setBackgroundColor(0xFF00FF00);
                 getPositionView(R.id.pos8).setBackgroundColor(0xFF00FF00);
             }
@@ -263,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
             winner = b2;
         }
         else if(((c3 == c2 && c3 == c1) || (c3 == a3 && c3 == b3)) && c3 != ""){
-            if(c3 == c2){
+            if(c3 == c2 && c3 == c1){
                 getPositionView(R.id.pos8).setBackgroundColor(0xFF00FF00);
                 getPositionView(R.id.pos7).setBackgroundColor(0xFF00FF00);
             }
