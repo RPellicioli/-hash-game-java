@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
             View v = rootLinearLayout.getChildAt(i);
             if (v instanceof Button) {
                 ((Button)v).setText("");
+                v.setBackgroundColor(0xff888888);
             }
         }
 
