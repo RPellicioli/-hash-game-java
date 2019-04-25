@@ -2,6 +2,10 @@ package br.ucs.android.aula2.calculadora;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private CharSequence winner;
     private AlertDialog alertModal;
     private Boolean[] selectedImages;
+    private File fileImage = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,36 +92,15 @@ public class MainActivity extends AppCompatActivity {
         playerTime = 0;
         selectedImages = new Boolean[2];
         selectedImages[0] = selectedImages[1] = false;
-    }
 
-    public void compartilhar(View view) {
+        Button p1 = getPositionView(R.id.player1);
+        Button p2 = getPositionView(R.id.player2);
 
-        Intent implicitIntent = new Intent(Intent.ACTION_SEND);
-        implicitIntent.setType("text/plain");
-        implicitIntent.putExtra(Intent.EXTRA_TEXT,
-                "O resultado da sua operação é ");
-        try {
-            this.startActivity(implicitIntent);
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(this,
-                    "Nenhum aplicativo de compartilhamento instalada.", Toast.LENGTH_LONG).show();
-        }
+        p1.setText("1");
+        p2.setText("2");
 
-    }
-
-    public void compartilharWhats(View view) {
-
-        Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
-        whatsappIntent.setType("text/plain");
-        whatsappIntent.setPackage("com.whatsapp");
-        whatsappIntent.putExtra(Intent.EXTRA_TEXT,
-                "O resultado da sua operação é ");
-        try {
-            this.startActivity(whatsappIntent);
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(this,
-                    "Whatsapp não está instalado.", Toast.LENGTH_LONG).show();
-        }
+        p1.setBackground(null);
+        p2.setBackground(null);
     }
 
     public void buttonClear(View view){
@@ -124,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case (R.id.player1):
                 if(!selectedImages[0]){
+                    Intent pic = getPic();
                     view.setBackgroundResource(R.drawable.button1);
                     Array.set(selectedImages, 0, true);
                 }
@@ -133,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case (R.id.player2):
                 if(!selectedImages[1]){
+                    Intent pic = getPic();
                     view.setBackgroundResource(R.drawable.button2);
                     Array.set(selectedImages, 1, true);
                 }
@@ -165,6 +156,40 @@ public class MainActivity extends AppCompatActivity {
         }
 
         verifyWinner();
+    }
+
+    private Intent getPic(){
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            try {
+                fileImage = createFileImage();
+            } catch (IOException ex) {
+                alertMessage("Erro", "Ocorreu um erro ao salvar a foto", 1);
+            }
+
+            if (fileImage != null) {
+                Uri photoURI = FileProvider.getUriForFile(getBaseContext(),
+                        getBaseContext().getApplicationContext().getPackageName() +
+                                ".provider", fileImage);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+
+                startActivityForResult(takePictureIntent, 3);
+            }
+        }
+
+        return takePictureIntent;
+    }
+
+    private File createFileImage() throws IOException {
+        String timeStamp = new
+                SimpleDateFormat("yyyyMMdd_Hhmmss").format(
+                new Date());
+        File pasta = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES);
+        File imagem = new File(pasta.getPath() + File.separator
+                + "JPG_" + timeStamp + ".jpg");
+        return imagem;
     }
 
     private void  verifyDone(){
