@@ -96,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
         Button p1 = getPositionView(R.id.player1);
         Button p2 = getPositionView(R.id.player2);
 
-        p1.setText("1");
-        p2.setText("2");
+        p1.setText("X");
+        p2.setText("O");
 
         p1.setBackground(null);
         p2.setBackground(null);
@@ -228,12 +228,50 @@ public class MainActivity extends AppCompatActivity {
         CharSequence c3 = getPositionView(R.id.pos9).getText();
 
         if((a1 == b1 && a1 == c1) || (a1 == a2 && a1 == a3) || (a1 == b2 && a1 == c3) && a1 != ""){
+            if(a1 == b1){
+                getPositionView(R.id.pos4).setBackgroundColor(0xFF00FF00);
+                getPositionView(R.id.pos7).setBackgroundColor(0xFF00FF00);
+            }
+            else if(a1 == a2){
+                getPositionView(R.id.pos2).setBackgroundColor(0xFF00FF00);
+                getPositionView(R.id.pos3).setBackgroundColor(0xFF00FF00);
+            }
+            else{
+                getPositionView(R.id.pos5).setBackgroundColor(0xFF00FF00);
+                getPositionView(R.id.pos9).setBackgroundColor(0xFF00FF00);
+            }
+
+            getPositionView(R.id.pos1).setBackgroundColor(0xFF00FF00);
             winner = a1;
         }
         else if((b2 == b1 && b2 == b3) || (b2 == a2 && b2 == c2) || (b2 == a3 && b2 == c1) && b2 != ""){
+            if(b2 == b1){
+                getPositionView(R.id.pos4).setBackgroundColor(0xFF00FF00);
+                getPositionView(R.id.pos6).setBackgroundColor(0xFF00FF00);
+            }
+            else if(b2 == a2){
+                getPositionView(R.id.pos2).setBackgroundColor(0xFF00FF00);
+                getPositionView(R.id.pos8).setBackgroundColor(0xFF00FF00);
+            }
+            else{
+                getPositionView(R.id.pos5).setBackgroundColor(0xFF00FF00);
+                getPositionView(R.id.pos7).setBackgroundColor(0xFF00FF00);
+            }
+
+            getPositionView(R.id.pos5).setBackgroundColor(0xFF00FF00);
             winner = b2;
         }
         else if((c3 == c2 && c3 == c1) || (c3 == a3 && c3 == b3) && c3 != ""){
+            if(c3 == c2){
+                getPositionView(R.id.pos8).setBackgroundColor(0xFF00FF00);
+                getPositionView(R.id.pos7).setBackgroundColor(0xFF00FF00);
+            }
+            else{
+                getPositionView(R.id.pos3).setBackgroundColor(0xFF00FF00);
+                getPositionView(R.id.pos6).setBackgroundColor(0xFF00FF00);
+            }
+
+            getPositionView(R.id.pos9).setBackgroundColor(0xFF00FF00);
             winner = c3;
         }
         else{
@@ -245,7 +283,14 @@ public class MainActivity extends AppCompatActivity {
             if(winner == "O") winner = "Jogador 2";
 
             gameOver = true;
-            alertMessage("Vencedor", "O ganhador da partida foi: " + winner, 0);
+
+            new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        alertMessage("Vencedor", "O ganhador da partida foi: " + winner, 0);
+                    }
+                },
+            3000);
         }
     }
 }
